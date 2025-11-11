@@ -1,0 +1,260 @@
+{
+  "address": "26aJf2GBAnjLidUCzPa9W8tuhZRj37J6VeW3fFQrJeqw",
+  "metadata": {
+    "name": "did_system",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_did",
+      "discriminator": [
+        222,
+        241,
+        78,
+        166,
+        116,
+        149,
+        228,
+        16
+      ],
+      "accounts": [
+        {
+          "name": "did_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  105,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "type": "string"
+        },
+        {
+          "name": "ipfs_hash",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "delete_did",
+      "discriminator": [
+        168,
+        180,
+        145,
+        216,
+        193,
+        183,
+        157,
+        43
+      ],
+      "accounts": [
+        {
+          "name": "did_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  105,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "relations": [
+            "did_account"
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "update_did",
+      "discriminator": [
+        253,
+        21,
+        4,
+        82,
+        119,
+        227,
+        78,
+        117
+      ],
+      "accounts": [
+        {
+          "name": "did_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  105,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "relations": [
+            "did_account"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "github",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "twitter",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "ipfs_hash",
+          "type": {
+            "option": "string"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "DidAccount",
+      "discriminator": [
+        77,
+        88,
+        239,
+        141,
+        251,
+        29,
+        237,
+        243
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "UsernameTooLong",
+      "msg": "Username cannot exceed 32 characters"
+    },
+    {
+      "code": 6001,
+      "name": "UsernameEmpty",
+      "msg": "Username cannot be empty"
+    },
+    {
+      "code": 6002,
+      "name": "Unauthorized",
+      "msg": "You are not authorized to perform this action"
+    }
+  ],
+  "types": [
+    {
+      "name": "DidAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "github",
+            "type": "string"
+          },
+          {
+            "name": "twitter",
+            "type": "string"
+          },
+          {
+            "name": "ipfs_hash",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "updated_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
