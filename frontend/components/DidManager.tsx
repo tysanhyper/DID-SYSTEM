@@ -400,8 +400,6 @@ const getProgram = () => {
                 </button>
               )}
 
-              {/* Wallet Button */}
-              <WalletMultiButton className="transform hover:scale-105 transition-transform duration-300" />
             </div>
           </div>
         </nav>
@@ -773,10 +771,7 @@ const getProgram = () => {
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-8 border border-white/20 animate-slideUp shadow-2xl">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400">Your DID</h2>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-gray-400">Connected</span>
-                </div>
+                <WalletMultiButton className="transform hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="bg-black/20 rounded-lg p-4 mb-6">
                 <div className="flex items-center justify-between">
